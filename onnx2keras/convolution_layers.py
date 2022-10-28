@@ -194,7 +194,7 @@ def convert_conv(node, params, layers, lambda_func, node_name, keras_name):
             return tf.transpose(x, [0, 2, 1])
 
         lambda_layer = keras.layers.Lambda(target_layer, name=keras_name)
-        lambda_layer[keras_name] = target_layer
+        lambda_func[keras_name] = target_layer
         layers[node_name] = lambda_layer(input_0)
 
         # padding_name = keras_name + '_pad'
